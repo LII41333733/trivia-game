@@ -1,6 +1,6 @@
 var game = {
-  timesUp: false,
-  selectionMade: false,
+  revealAnswer: false,
+  answerSelected: false,
   correctAnswer: "",
   qi: 0,
   questions: [
@@ -130,6 +130,9 @@ var game = {
 
   setBoard: function () {
 
+    this.revealAnswer = false;
+    this.answerSelected = false;
+
     $(".body-row-gif").hide();
     $(".body-row-answers").show();
     $(".timer-row").show();
@@ -137,57 +140,69 @@ var game = {
 
     var currentQuestion = this.questions[this.qi].question;
     this.correctAnswer = this.questions[this.qi].correctAnswer;
+
     $("#q").text(currentQuestion);
     $("#a1").text(this.questions[this.qi].answers.a);
     $("#a2").text(this.questions[this.qi].answers.b);
     $("#a3").text(this.questions[this.qi].answers.c);
     $("#a4").text(this.questions[this.qi].answers.d);
-    $(".timer").html(20);
 
-    this.timer();
+
+    this.showAnswer();
 
   },
 
-  timer: function () {
+
+  showAnswer: function(result) {
     
-    var timerVar = setInterval(countdown, 1000);
-    var timeLeft = 19;
+    if (!this.revealAnswer) {
 
-    function countdown() {
-      if (timeLeft < 1) {
-        timeLeft = 0;
-        $(".timer").html(timeLeft);
+      stopTimer();
+
+      if (this.answerSelected) {
+        this.revealAnswer = true;
+        this.showAnswer(result);
       }
-      if (timeLeft === 0) {
-        game.timesUp = true;
+
+      var timeLeft = 19; 
+      var timerVar = setInterval(countdown, 1000);
+
+      function stopTimer() {
         clearInterval(timerVar);
-        game.showAnswer("time");
-      } else {
-        $(".timer").html(timeLeft);
-        timeLeft--;
       }
-    }
-  },
+      
+      function countdown() {
+        if (timeLeft === 0) {
+          stopTimer();
+          game.revealAnswer = true;
+          game.showAnswer("time");
+        } else {
+          $(".timer").text(timeLeft);
+          timeLeft--;
+        }
+      }
 
-  showAnswer: function (result) {
-    $(".body-row-answers").hide();
-    $(".body-row-gif").show();
-    $("#gif").html("<br>" + this.questions[this.qi].gif);
-
-    if (result === "time") {
-      $("#q").html("times up! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
-    } else if (result === "right") {
-      $("#q").html("you got it! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
     } else {
-      $("#q").html("bad call! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
+
+
+
+      $(".body-row-answers").hide();
+      $(".body-row-gif").show();
+      $("#gif").html("<br>" + this.questions[this.qi].gif);
+
+      if (result === "time") {
+        $("#q").html("times up! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
+      } else if (result === "right") {
+        $("#q").html("you got it! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
+      } else {
+        $("#q").html("bad call! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
+      }
+
+      setTimeout(function () {
+        game.qi++;
+        game.setBoard();
+      }, 1000 * 8);
     }
-
-    setTimeout(function () {
-      game.timesUp = false;
-      game.qi++;
-      game.setBoard();
-    }, 1000 * 8);
-
   }
 
 
@@ -205,8 +220,7 @@ $("#start").on("click", function () {
 });
 
 $(".answer-div").on("click", function () {
-  if (!game.timesUp) {
-    game.selectionMade = true;
+    game.answerSelected = true;
     var answer = $(this).attr("data-answer");
     for (var i = 0; i < 4; i++) {
       if (answer === game.questions[game.qi].correctAnswer) {
@@ -215,5 +229,4 @@ $(".answer-div").on("click", function () {
         game.showAnswer("wrong");
       }
     }
-  }
 });
