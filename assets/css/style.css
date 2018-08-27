@@ -8,7 +8,7 @@ html, body {
   text-align: center;
   background-color: black;
   font-family: trivia-font;
-  font-size: 30px;
+  font-size: 25px;
   letter-spacing: 2px;
 }
 
@@ -22,9 +22,6 @@ html, body {
   padding: 0;
 }
 
-.col-12 {
-  max-width: 85%;
-}
 
 .game-container {
   background-color: rgba(243, 255, 246, 0.96);
@@ -37,27 +34,33 @@ html, body {
   max-height: 700px;
 }
 
-.question-div {
+.head-row {
   height: auto;
-  max-height: 150px;
-  /* margin-top: 60px; */
   border: 5px solid black;
   font-size: 1.2rem;
+  line-height: 1.5rem;
 }
 
 .answer-div {
   height: 70px;
-  /* border: 1px solid blue; */
   line-height: 70px;
+  width: 70%;
+}
+.answer-1-div {
+  height: 70px;
+  line-height: 70px;
+  width: 70%;
+  margin-top: 25px;
+}
+
+.gif-div {
+  margin-top: -20px;
 }
 
 .answer-div:hover {
   border: 1px solid black;
 }
 
-.answer-1-div {
-  margin-top: 20px;
-}
 
 #gif {
   height: auto;
@@ -69,8 +72,9 @@ html, body {
   margin-top: 20px;
 }
 
-#ans-b {
-  font-size: 1.5rem;
+#a {
+  font-size: 1.8rem;
+
 }
 
 .intro {
@@ -87,7 +91,7 @@ html, body {
   margin-top: 20px;
 }
 
-.timer {
+.timer-css {
   font-size: .8rem;
   margin: 15px;
 
