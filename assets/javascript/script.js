@@ -1,4 +1,5 @@
 var game = {
+  timesUp: false,
   revealAnswer: false,
   answerSelected: false,
   correctAnswer: "",
@@ -55,7 +56,7 @@ var game = {
       answers: {
         a: "breyers",
         b: "haagen-dazs",
-        c: "ben & jerry's",
+        c: "ben and jerry's",
         d: "blue bell"
       }
     },
@@ -132,7 +133,9 @@ var game = {
 
     this.revealAnswer = false;
     this.answerSelected = false;
+    this.timeLeft = 2;
 
+    $(".timer").text(game.timeLeft);
     $(".body-row-gif").hide();
     $(".body-row-answers").show();
     $(".timer-row").show();
@@ -147,66 +150,56 @@ var game = {
     $("#a3").text(this.questions[this.qi].answers.c);
     $("#a4").text(this.questions[this.qi].answers.d);
 
+    this.stopTimer();
 
-    this.showAnswer();
+
+    this.timerVar = setInterval(function () {
+      if (game.timeLeft === 0) {
+        $(".timer").text(game.timeLeft);
+        game.stopTimer();
+        game.showAnswer("time");
+      } else {
+        $(".timer").text(game.timeLeft);
+        game.timeLeft--;
+      }
+    }, 1000);
+
+    console.log(this.timerVar);
 
   },
 
+  // startTimer: function () {
+  //   console.log(this.timerVar)
+  //   this.timerVar;
+  // },
 
-  showAnswer: function(result) {
-    
-    if (!this.revealAnswer) {
 
-      stopTimer();
 
-      if (this.answerSelected) {
-        this.revealAnswer = true;
-        this.showAnswer(result);
-      }
+  stopTimer: function () {
+    clearInterval(this.timerVar);
+  },
 
-      var timeLeft = 19; 
-      var timerVar = setInterval(countdown, 1000);
 
-      function stopTimer() {
-        clearInterval(timerVar);
-      }
-      
-      function countdown() {
-        if (timeLeft === 0) {
-          stopTimer();
-          game.revealAnswer = true;
-          game.showAnswer("time");
-        } else {
-          $(".timer").text(timeLeft);
-          timeLeft--;
-        }
-      }
+  showAnswer: function (result) {
+    $(".body-row-answers").hide();
+    $(".body-row-gif").show();
+    $("#gif").html("<br>" + this.questions[this.qi].gif);
 
+    if (result === "time") {
+      $("#q").html("times up! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
+    } else if (result === "right") {
+      $("#q").html("you got it! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
     } else {
-
-
-
-      $(".body-row-answers").hide();
-      $(".body-row-gif").show();
-      $("#gif").html("<br>" + this.questions[this.qi].gif);
-
-      if (result === "time") {
-        $("#q").html("times up! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
-      } else if (result === "right") {
-        $("#q").html("you got it! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
-      } else {
-        $("#q").html("bad call! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
-      }
-
-      setTimeout(function () {
-        game.qi++;
-        game.setBoard();
-      }, 1000 * 8);
+      $("#q").html("bad call! the correct answer was: <br> <span id='a'>" + game.questions[game.qi].answers[game.correctAnswer] + "</span>");
     }
+
+    setTimeout(function () {
+      game.qi++;
+      game.setBoard();
+    }, 1000 * 8);
   }
-
-
 }
+
 
 $(".body-row-gif").hide();
 $(".timer-row").hide();
@@ -220,13 +213,14 @@ $("#start").on("click", function () {
 });
 
 $(".answer-div").on("click", function () {
-    game.answerSelected = true;
-    var answer = $(this).attr("data-answer");
-    for (var i = 0; i < 4; i++) {
-      if (answer === game.questions[game.qi].correctAnswer) {
-        game.showAnswer("right");
-      } else {
-        game.showAnswer("wrong");
-      }
+  game.stopTimer();
+  game.answerSelected = true;
+  var answer = $(this).attr("data-answer");
+  for (var i = 0; i < 4; i++) {
+    if (answer === game.questions[game.qi].correctAnswer) {
+      game.showAnswer("right");
+    } else {
+      game.showAnswer("wrong");
     }
+  }
 });
