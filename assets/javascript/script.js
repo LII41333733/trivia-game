@@ -6,12 +6,9 @@ var game = {
       $(".head-row").css("margin-top", "40px");
       $(".body-row-gif").css("margin-top", "40px");
       $("span").css("margin-top", "20px");
-      $(".stat-gif").css("width", "360px");
-      $(".stat-gif").css("height", "200px");
-      $(".stat-gif").css("margin", "5px");
-
-
-
+      $(".stat-gif").css("width", "350px");
+      $(".stat-gif").css("height", "190px");
+      $(".stat-gif").css("margin-top", "40px");
       $(".timer-row").hide();
       $(".body-row-gif").hide();
       $(".head-row").hide();
@@ -142,7 +139,7 @@ var game = {
         },
       ];
       this.revealAnswer = false;
-      this.timeLeft = 2;
+      this.timeLeft = 20;
       this.questionIndex++;
       this.currentQuestion = this.questions[this.questionIndex].question;
       this.correctAnswerKey = this.questions[this.questionIndex].correctAnswer;
