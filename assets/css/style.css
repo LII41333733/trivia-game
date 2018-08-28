@@ -1,14 +1,13 @@
 @font-face {
   font-family: trivia-font;
   src: url(../css/beantown.regular.ttf);
-  /* font-weight: bold; */
 }
 
 html, body {
   text-align: center;
   background-color: black;
   font-family: trivia-font;
-  font-size: 25px;
+  font-size: 24px;
   letter-spacing: 2px;
 }
 
@@ -24,7 +23,7 @@ html, body {
 
 
 .game-container {
-  background-color: rgba(243, 255, 246, 0.96);
+  background-color: rgba(243, 255, 246, 0.95);
   height: 510px;
   position: absolute;
   top: 90px;
@@ -54,31 +53,17 @@ html, body {
 }
 
 .gif-div {
-  margin-top: -20px;
+  margin-top: -8px;
 }
 
-.answer-div:hover {
-  border: 1px solid black;
-}
-
-
-#gif {
-  height: auto;
-  width: 80%;
-}
-
-
-.gif {
-  margin-top: 20px;
-}
 
 #a {
-  font-size: 1.8rem;
+  font-size: 2rem;
 
 }
 
 .intro {
-  margin: 70px;
+  margin: 45px;
   font-size: 26px;
 }
 
@@ -87,14 +72,24 @@ html, body {
   line-height: 30px;
   border: 2px solid black;  
   text-align: center;
-  padding: 20px;
+  padding: 20px 20px 20px 25px;
   margin-top: 20px;
+  margin-right: 10px;
+}
+
+#start:hover, .answer-div:hover {
+  background-color: black;
+  color: rgba(243, 255, 246, 0.95)
 }
 
 .timer-css {
   font-size: .8rem;
   margin: 15px;
 
+}
+
+.big {
+  font-size: 1.7rem;
 }
 
 
