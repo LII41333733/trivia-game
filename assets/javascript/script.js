@@ -2,18 +2,40 @@ var game = {
   setBoard: function () {
     if (this.questionIndex === 10) {
       $("#q").html("game stats");
-      $("#gif").html("<span>Guesses Correct: " + this.guessesCorrect + " </span> - <span>Guesses Incorrect: " + this.guessesIncorrect + " </span> - <span>Timed Out: " + this.timedOut + " </span><br><img class='stat-gif' src='./assets/images/bg.gif'> <img class='stat-gif' src='./assets/images/ps-end.gif'> <img class='stat-gif' src='./assets/images/hr.gif'>")
+      $("#gif").html("<span id='guessesDisplay'>Guesses Correct: " + this.guessesCorrect + " - Guesses Incorrect: " + this.guessesIncorrect + " - Timed Out: " + this.timedOut + "</span> <br>")
+      $("#gif").append("<img class='stat-gif' src='./assets/images/bg.gif'> <img class='stat-gif' src='./assets/images/ps-end.gif'> <img class='stat-gif' src='./assets/images/hr.gif'> <br>")
+      $("#gif").append("<div id='start-over'>restart?</div>")
       $(".head-row").css("margin-top", "40px");
-      $(".body-row-gif").css("margin-top", "40px");
       $("span").css("margin-top", "20px");
-      $(".stat-gif").css("width", "350px");
-      $(".stat-gif").css("height", "190px");
-      $(".stat-gif").css("margin-top", "40px");
+      $(".gif-div").css("margin-top", "30px");
+      $(".stat-gif").css({"width":"350px", "height": "190px", "margin-top": "40px"});
+      $("#start-over").css({"height": "75px", "line-height": "30px", "border": "2px solid black", "text-align": "center","padding": "20px 20px 20px 25px","margin": "20px auto", "width":"200px"});
+
       $(".timer-row").hide();
       $(".body-row-gif").hide();
       $(".head-row").hide();
+      
       $(".head-row").delay(300).fadeIn(800);
-      $(".body-row-gif").delay(2000).fadeIn(1500);
+      $("#q").delay(300).fadeIn(800);
+      $(".body-row-gif").delay(1000 * 2).fadeIn(800);
+      $("#guessesDisplay").delay(1000 * 2).fadeIn(800);
+      $(".stat-gif").delay(1000 * 2.2).fadeIn(800);
+      $("#start-over").delay(1000 * 2.4).fadeIn(800);
+
+
+
+      $("#start-over").on("click", function () {
+        $(".gif-div").css("margin-top", "0px");
+        $(".head-row").css("margin-top", "0px");
+        game.questionIndex = -1;
+        game.guessesCorrect = 0;
+        game.guessesIncorrect = 0;
+        game.timedOut = 0;
+        game.setBoard();
+      });
+
+
+
     } else {
       this.questions = [
         {

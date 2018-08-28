@@ -67,7 +67,7 @@ html, body {
   font-size: 26px;
 }
 
-#start {
+#start, #start-over {
   height: 75px;
   line-height: 30px;
   border: 2px solid black;  
@@ -77,7 +77,7 @@ html, body {
   margin-right: 10px;
 }
 
-#start:hover, .answer-div:hover {
+#start:hover, .answer-div:hover, #start-over:hover {
   background-color: black;
   color: rgba(243, 255, 246, 0.95)
 }
