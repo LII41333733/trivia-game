@@ -10,19 +10,15 @@ var game = {
       $(".gif-div").css("margin-top", "30px");
       $(".stat-gif").css({"width":"350px", "height": "190px", "margin-top": "40px"});
       $("#start-over").css({"height": "75px", "line-height": "30px", "border": "2px solid black", "text-align": "center","padding": "20px 20px 20px 25px","margin": "20px auto", "width":"200px"});
-
       $(".timer-row").hide();
       $(".body-row-gif").hide();
       $(".head-row").hide();
-      
       $(".head-row").delay(300).fadeIn(800);
       $("#q").delay(300).fadeIn(800);
       $(".body-row-gif").delay(1000 * 2).fadeIn(800);
       $("#guessesDisplay").delay(1000 * 2).fadeIn(800);
       $(".stat-gif").delay(1000 * 2.2).fadeIn(800);
       $("#start-over").delay(1000 * 2.4).fadeIn(800);
-
-
 
       $("#start-over").on("click", function () {
         $(".gif-div").css("margin-top", "0px");
@@ -33,8 +29,6 @@ var game = {
         game.timedOut = 0;
         game.setBoard();
       });
-
-
 
     } else {
       this.questions = [
@@ -160,6 +154,7 @@ var game = {
           }
         },
       ];
+
       this.revealAnswer = false;
       this.timeLeft = 20;
       this.questionIndex++;
@@ -174,22 +169,14 @@ var game = {
       $("#a3").text(this.questions[this.questionIndex].answers.c);
       $("#a4").text(this.questions[this.questionIndex].answers.d);
       $(".timer").text(this.timeLeft);
-
       $(".timer-row").hide();
       $(".head-row").hide();
       $(".timer-row").delay(300).fadeIn(800);
       $(".head-row").delay(300).fadeIn(800);
-
-
-
       $(".answer-1-div").delay(1000 * 2).fadeIn(1500);
       $(".answer-2-div").delay(1000 * 2.2).fadeIn(1500);
       $(".answer-3-div").delay(1000 * 2.4).fadeIn(1500);
       $(".answer-4-div").delay(1000 * 2.6).fadeIn(1500);
-
-
-
-
 
       this.stopTimer();
 
@@ -203,16 +190,12 @@ var game = {
           game.timeLeft--;
         }
       }, 1000);
-
     }
-
-
   },
 
   stopTimer: function () {
     clearInterval(this.timerVar);
   },
-
 
   showAnswer: function (clickedAnswer) {
     $(".answer-1-div").hide();
@@ -248,11 +231,8 @@ $(".answer-1-div").hide();
 $(".answer-2-div").hide();
 $(".answer-3-div").hide();
 $(".answer-4-div").hide();
-
-
 $(".game-container").delay(2000).fadeIn(800);
 $("#start").delay(7000).fadeIn(1200);
-
 
 $("#start").on("click", function () {
   $(".intro").hide();
