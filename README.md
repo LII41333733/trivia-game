@@ -9,8 +9,8 @@
 * The main functionality of the trivia game is highlighted in the use of Javascript timers. Through this project, I was able to make more effective the use of JQuery animations in tandem with the timers without any issues with synchrony.
 
 * Technologies Used:
-> HTML
 
+> HTML
 > CSS
 > JavaScript
 > JQuery
