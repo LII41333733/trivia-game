@@ -10,7 +10,7 @@
 > JQuery
 > Bootstrap
 * Screenshots
-![{Alt}](./assets/screenshot)
+![{Alt}](assets/images/screenshot1.png)
 ![{Alt}](http://url/a.png)
 ![{Alt}](http://url/a.png)
 * Licenses
