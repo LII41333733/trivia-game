@@ -11,8 +11,5 @@
 > Bootstrap
 * Screenshots
 ![{Alt}](assets/images/screenshot1.png)
-![{Alt}](http://url/a.png)
-![{Alt}](http://url/a.png)
-* Licenses
-
-Philadelphia Eagles Super Bowl
+![{Alt}](assets/images/screenshot2.png)
+![{Alt}](assets/images/screenshot3.png)
