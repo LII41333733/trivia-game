@@ -17,7 +17,7 @@ The main functionality of the trivia game is highlighted in the use of Javascrip
 * JQuery
 * Bootstrap
 
-## Screenshots:
+## Screenshots
 
 ### Game Intro
 ![{Alt}](assets/images/screenshot4.png)
