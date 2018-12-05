@@ -25,11 +25,11 @@ The main functionality of the trivia game is highlighted in the use of Javascrip
 ### Example Question
 ![{Alt}](assets/images/screenshot1.png)
 
-### Incorrect Answer
-![{Alt}](assets/images/screenshot2.png)
-
 ### Correct Answer
 ![{Alt}](assets/images/screenshot5.png)
+
+### Incorrect Answer
+![{Alt}](assets/images/screenshot2.png)
 
 ### Game Summary
 ![{Alt}](assets/images/screenshot3.png)
