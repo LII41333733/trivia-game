@@ -15,10 +15,19 @@
 4. JQuery
 5. Bootstrap
 
-* Screenshots
+* Screenshots:
 
+Game Intro
+![{Alt}](assets/images/screenshot4.png)
+
+Correct Answer
+![{Alt}](assets/images/screenshot5.png)
+
+Incorrect Answer
 ![{Alt}](assets/images/screenshot1.png)
 
+Game Summary
 ![{Alt}](assets/images/screenshot2.png)
 
+Example Question
 ![{Alt}](assets/images/screenshot3.png)
