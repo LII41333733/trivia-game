@@ -1,6 +1,6 @@
 # Philadelphia Eagles Super Bowl Trivia!
 
-[{"Link to Heroku"}](http://url/a.png)
+[Link to Heroku](http://url/a.png)
 
 ## Introduction
 
