@@ -1,8 +1,6 @@
 # Philadelphia Eagles Super Bowl Trivia!
 
-[Link to Heroku](http://url/a.png)
-
-[Link to github Pages (Temporary)](https://lii41333733.github.io/trivia-game/)
+[Link to the App](https://lii41333733.github.io/trivia-game/)
 
 ## Introduction
 
